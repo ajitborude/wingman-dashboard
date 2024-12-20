@@ -3,7 +3,7 @@ import { Order } from '@/lib/data/orders-data';
 import { ColumnDef } from '@tanstack/react-table';
 import { format, intervalToDuration } from 'date-fns';
 import { ArrowUpDown } from 'lucide-react';
-import { Link } from 'react-router';
+import ChatDialog from '../chat-dialog';
 
 export const columns: ColumnDef<Order>[] = [
   {
@@ -35,7 +35,7 @@ export const columns: ColumnDef<Order>[] = [
       );
     },
     cell: ({ row }) => {
-      const formatted = format(parseInt(row.getValue('date')), 'dd-MM-yyyy');
+      const formatted = format(parseInt(row.getValue('date')) * 1000, 'dd-MM-yyyy');
       return <div className="text-center">{formatted}</div>;
     },
   },
@@ -77,11 +77,7 @@ export const columns: ColumnDef<Order>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex items-center justify-center">
-          <Button variant="secondary" className="px-2 py-1" asChild>
-            <Link to={`/chat?orderId=${row.original.id}`}>
-              View Chat <ArrowUpDown className="w-4 h-4" />
-            </Link>
-          </Button>
+          <ChatDialog orderData={row.original} />
         </div>
       );
     },

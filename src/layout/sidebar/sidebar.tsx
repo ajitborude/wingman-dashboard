@@ -26,7 +26,7 @@ export default function Sidebar() {
               </Button>
             </NavLink>
             <NavLink to="/sales" className={({ isActive }) => (isActive ? 'bg-background rounded-lg text-primary' : 'bg-primary rounded-lg text-muted')}>
-              <Button className="rounded-lg bg-primary" variant="ghost" size="icon">
+              <Button className="rounded-lg" variant="ghost" size="icon">
                 <HiUserGroup className="!w-5 !h-5" />
               </Button>
             </NavLink>
