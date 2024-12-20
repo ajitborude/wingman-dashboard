@@ -14,12 +14,12 @@ export default function ChatDialog({ orderData }: { orderData: Order }) {
           View Chat <ArrowUpDown className="w-4 h-4" />
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-3xl max-h-[75%] overflow-auto scrollbar">
+      <DialogContent className="md:max-w-3xl max-w-[90%] max-h-[75%] overflow-auto scrollbar">
         <DialogHeader>
           <DialogTitle>{orderData.product_name}</DialogTitle>
           <DialogDescription>{format(parseInt(orderData.date) * 1000, 'dd-MM-yy')}</DialogDescription>
         </DialogHeader>
-        <div className="relative flex flex-col p-4">
+        <div className="relative flex flex-col md:p-4">
           {orderData.chats.map((chat: any, index: number) => {
             return (
               <div
@@ -42,7 +42,7 @@ export default function ChatDialog({ orderData }: { orderData: Order }) {
                 >
                   {index / 2 === 0 ? 'You' : 'Client'}
                 </span>
-                <div className="flex flex-col p-4 rounded-lg bg-muted">
+                <div className="flex flex-col p-2 rounded-lg md:p-4 bg-muted">
                   <span>{chat.message}</span>
                   <span
                     className={clsx([
